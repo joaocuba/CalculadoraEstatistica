@@ -1,59 +1,61 @@
 # Calculadora Estatística em Python
 
-Projeto desenvolvido em Python para calcular medidas estatísticas descritivas a partir de diferentes formas de organização dos dados.
+Calculadora de estatística descritiva com interface web em **Streamlit** e gráficos em **Matplotlib**.
 
-O objetivo principal deste projeto consiste em praticar fundamentos de programação, explorando a linguagem python, modularização de código e aplicação de conceitos estatísticos utilizados em análises de dados.
-
-## Objetivo do projeto
-
-A Calculadora Estatística permite realizar cálculos básicos de estatística descritiva para apoiar a compreensão de conjuntos de dados.
-
-O projeto foi desenvolvido como parte da minha evolução em Python e Análise de Dados, com foco em aplicar manualmente conceitos estatísticos como média, mediana, moda, amplitude, variância, desvio padrão e coeficiente de variação.
+O projeto foi desenvolvido para praticar funções, listas, estruturas condicionais, laços de repetição e modularização em Python, aplicando manualmente conceitos estatísticos utilizados em análise de dados.
 
 ## Funcionalidades
 
-O programa permite trabalhar com três tipos de dados:
-
-1. Dados brutos;
-2. Dados agrupados sem intervalos de classes;
-3. Dados agrupados com intervalos de classes.
-
-Entre as principais medidas estatísticas consideradas no projeto estão:
-
-- Mínimo;
-- Máximo;
-- Amplitude;
-- Média aritmética;
-- Média ponderada;
-- Mediana;
-- Moda;
-- Variância populacional;
-- Desvio padrão populacional;
-- Coeficiente de variação.
+- Entrada de dados brutos, agrupados sem intervalos ou agrupados com intervalos de classes.
+- Cálculo de mínimo, máximo, amplitude, média, mediana, moda, variância populacional, desvio padrão populacional e coeficiente de variação, conforme o tipo de dados.
+- Validação das entradas e apresentação dos resultados na interface.
+- Gráfico de dispersão para dados brutos, mostrando os valores na ordem de entrada.
+- Histograma ponderado pelas frequências para dados agrupados sem intervalos.
+- Histograma com os limites informados para dados agrupados com intervalos. A área de cada barra representa a frequência, permitindo intervalos de larguras diferentes.
 
 ## Tecnologias utilizadas
 
 - Python 3
+- Streamlit
+- Matplotlib
 
-## Conceitos aplicados
+## Como executar
 
-- Programação modular
-- Funções
-- Listas
-- Estruturas condicionais
-- Laços de repetição
-- Entrada de dados pelo terminal
-- Estatística descritiva
-- Medidas de tendência central
-- Medidas de dispersão
+Com Python instalado, abra o terminal na pasta do projeto e execute:
+
+```bash
+python -m pip install -r requirements.txt
+python -m streamlit run main.py
+```
+
+A interface será disponibilizada no navegador. Mantenha o terminal aberto durante o uso. Para encerrar, pressione `Ctrl+C`.
+
+Use o mesmo ambiente Python para instalar as dependências e iniciar a aplicação.
+
+## Como usar
+
+1. Escolha como os dados estão organizados.
+2. Preencha os valores e, quando solicitado, as frequências e os limites dos intervalos.
+3. Clique em **Calcular** para consultar os resultados e o gráfico.
+
+Separe os números por vírgula, ponto e vírgula ou espaço. Use ponto como separador decimal, por exemplo: `2.5, 4, 6.8`.
+
+As frequências devem ser inteiros não negativos, com pelo menos uma frequência positiva. Os intervalos devem ter largura positiva e não podem se sobrepor.
 
 ## Estrutura do projeto
 
 ```text
-Calculadora Estatistica/
-│
-├── main.py
-├── entrada_saida.py
-├── medidas_tendencia_central.py
-├── medidas_dispersao.py
+CalculadoraEstatistica/
+├── main.py                       # Interface, validação e fluxo da aplicação
+├── entrada_saida.py              # Visualização dos gráficos e entrada legada pelo terminal
+├── medidas_tendencia_central.py  # Funções de média, mediana e moda
+├── medidas_dispersao.py          # Funções de amplitude, variância, desvio e coeficiente
+├── requirements.txt             # Dependências da aplicação
 └── README.md
+```
+
+## Escopo e limitações
+
+Os módulos de cálculo foram preservados durante a migração da interface para Streamlit. O projeto tem finalidade educacional e não representa uma implementação completa dos princípios SOLID.
+
+Medidas que geram erros tratados pela interface são sinalizadas como indisponíveis. A moda de Czuber é sinalizada como indisponível quando a classe modal está na primeira ou na última posição, devido à limitação da função atual. Para dados com intervalos, medidas baseadas nos pontos médios são aproximações.
